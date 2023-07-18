@@ -11,12 +11,21 @@ python -m venv flask-env
 pip3 install -r requirements.txt
 
 # Declare the variable FLASK_APP (Windows):
-
 set FLASK_APP=main.py
+
+# Declare the variable FLASK_ENV (Windows):
+set “FLASK_ENV=development”
+
+#Activate the debug mode:
+set FLASK_DEBUG=1
 
 # Run the flask server
 
 flask run
+
+OR
+
+py main.py
 
 # Navigate to:
 http://127.0.0.1:5000/flask
