@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% import 'macros.html' as macros%}
+{% import 'bootstrap4/form.html' as wtf %}
+
 
 {% block title %}
     {{ super() }}
@@ -8,14 +10,22 @@
 
 
 {% block content %}
+    {% if username != None %}
+        <h1>Welcome, {{username}}</h1>
+
+    {% endif %}
     {% if user_ip %}
 
-        <h1>Hello, for IP address is {{ user_ip }}</h1>
+        <h3>Hello, for IP address is {{ user_ip }}</h3>
 
     {% else %}
         <a href="{{ url_for('index')}}">Go to the start</a>
 
     {% endif %}
+    <form style="max-width: 50%" method="post">
+        {{ login_form.csrf_token }}
+        {{ wtf.render_form(login_form) }}
+    </form>
 
     <ul>
     {% for todo in todos %}

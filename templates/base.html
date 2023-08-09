@@ -1,17 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>
-        {% block title %} Flask |  {% endblock %}
-    </title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">
-</head>
-<body>
-    <header>
-        {% include 'navbar.html'%}
-    </header>
-    {% block content %}
+  <head>
+    {% block head %}
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>{% block title %}Flask Example - {% endblock %}</title>
+
+      {% block styles %}
+        {{ bootstrap.load_css() }}
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+      {% endblock %}
     {% endblock %}
-</body>
+  </head>
+
+  <body>
+    {% block body %}
+      {% block navbar %}
+        {% include "navbar.html" %}
+      {% endblock %}
+
+      {% block flash %}
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-success alert-dismissible">
+                <button type="button" 
+                        data-bs-dismiss="alert" 
+                        class="close">&times;
+                </button>
+                {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+      {% endblock  %}
+
+      {% block content %}
+      {% endblock %}
+      {% block scripts %}
+        {{ bootstrap.load_js() }}
+      {% endblock %}
+    {% endblock %}
+
+  </body>
 </html>
