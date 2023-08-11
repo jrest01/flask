@@ -22,10 +22,7 @@
         <a href="{{ url_for('index')}}">Go to the start</a>
 
     {% endif %}
-    <form style="max-width: 50%" method="post">
-        {{ login_form.csrf_token }}
-        {{ wtf.render_form(login_form) }}
-    </form>
+        
 
     <ul>
     {% for todo in todos %}
