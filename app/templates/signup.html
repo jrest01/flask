@@ -4,13 +4,14 @@
 
 {% block title %}
     {{ super() }}
-    Login
+    Signup
 {% endblock %}
 
 {% block content %}
     <div class="container">
-        {{ login_form.csrf_token }}
-        {{ wtf.render_form(login_form) }}
+        <h1>Register a account</h1>
+        {{ signup_form.csrf_token }}
+        {{ wtf.render_form(signup_form) }}
     </div>
 
 
