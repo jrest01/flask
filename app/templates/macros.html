@@ -1,3 +1,19 @@
-{% macro render_todo(todo) %}
-    <li>Description: {{todo.to_dict()['description']}}</li>
+{% import 'bootstrap4/form.html' as wtf %}
+
+{% macro render_todo(todo, todo_delete_form, todo_update_form) %}
+<div class="container">
+    <li class="list-group-item">
+        <span class="badge">
+            {%if todo.to_dict().done %}
+            Done
+            {% else %}
+            To do
+            {% endif %}
+        </span>
+        Description: {{ todo.to_dict().description }}
+        {{ wtf.render_form(todo_delete_form, action = url_for('delete', todo_id=todo.id)) }}
+        {{ wtf.render_form(todo_update_form, action = url_for('update', todo_id=todo.id, done = todo.to_dict().done)) }}
+
+    </li>
+</div>
 {% endmacro %}

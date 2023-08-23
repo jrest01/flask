@@ -19,7 +19,7 @@ def login():
         return redirect(url_for('index'))
 
     else:
-        if request.method == 'POST':   
+        if request.method == 'POST':
             username = login_form.username.data
             password = login_form.password.data
 
