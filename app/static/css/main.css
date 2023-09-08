@@ -1,7 +1,18 @@
-html * {
-    font-family: sans-serif;
+body {
+    /* background: rgb(22, 22, 22);
+    background: linear-gradient(90deg, rgba(22, 22, 22, 0.7567401960784313) 0%, rgba(156, 193, 198, 1) 16%); */
+}
+
+h1 {
+    font-family: system-ui;
 }
 
 img {
     max-width: 30px;
+}
+
+.text_styles {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    line-height: 1.2;
 }

@@ -1,36 +1,35 @@
-
 {% block navbar %}
+
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <!-- <img src="{{ url_for('static', filename='images/platzi.png')}}" alt="Platzi Logo"> -->
-
-    <a class="navbar-brand" href="#">Flask Project</a>
-
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand" href="#">Flask - To Do List</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <!-- <div class="navbar-nav ms-1"> -->
+      <div class="navbar-nav ms-auto">
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
         {% if current_user.is_authenticated %}
-          <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('auth.logout') }}">
-              Logout
-            </a>
-          </li>
+        <a class="nav-link" href="{{ url_for('auth.logout') }}">
+          Logout
+        </a>
         {% endif %}
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('hello') }}">
-            Inicio
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="https://github.com/jrest01" target="_blank">
-            Git Hub
-          </a>
-        </li>
-      </ul>
+        <a class="nav-link" href="{{ url_for('hello') }}">
+          Inicio
+        </a>
+        <a class="nav-link" href="https://github.com/jrest01" target="_blank">
+          Git Hub
+        </a>
+      </div>
     </div>
   </div>
 </nav>
+
+
+
+
 {% endblock %}
