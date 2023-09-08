@@ -1,0 +1,37 @@
+{% extends 'base.html'%}
+{% import 'bootstrap4/form.html' as wtf %}
+
+
+{% block content%}
+
+<div class="row">
+    <div class="col-sm 3 col-lg-3"></div>
+    <div class="col-sm 6 col-lg-6">
+
+
+        <div class="mx-auto" style="width: 300px;">
+            <h1>Updating: </h1>
+            <h1>{{todo_doc.description}}</h1>
+        </div>
+
+
+        <div class="container pt-5">
+            <form method="post">
+                {{ todo_update_form.csrf_token }}
+
+                {{ wtf.render_form(todo_update_form) }}
+            </form>
+        </div>
+
+    </div>
+    <div class="col-sm 3 col-lg-3"></div>
+
+
+
+</div>
+
+
+
+
+
+{% endblock %}

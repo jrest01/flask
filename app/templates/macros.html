@@ -1,19 +1,38 @@
 {% import 'bootstrap4/form.html' as wtf %}
 
-{% macro render_todo(todo, todo_delete_form, todo_update_form) %}
-<div class="container">
-    <li class="list-group-item">
-        <span class="badge">
-            {%if todo.to_dict().done %}
-            Done
-            {% else %}
-            To do
-            {% endif %}
-        </span>
-        Description: {{ todo.to_dict().description }}
-        {{ wtf.render_form(todo_delete_form, action = url_for('delete', todo_id=todo.id)) }}
-        {{ wtf.render_form(todo_update_form, action = url_for('update', todo_id=todo.id, done = todo.to_dict().done)) }}
+{% macro render_todo(todo, todo_delete_form, todo_status_update, todo_update_button) %}
 
-    </li>
+
+<div class="col-sm-4"></div>
+
+<div class="col-sm-4 ">
+    <tr>
+        <td>
+            <span class="badge badge-primary badge-pill">
+                {% if todo.to_dict().done %}
+                Done
+                {% else %}
+                To Do
+                {% endif %}
+            </span>
+        </td>
+
+        <td>
+            <h5>{{todo.to_dict().description}}</h5>
+        </td>
+
+        <td>
+            {{ wtf.render_form(todo_delete_form, action = url_for('delete', todo_id=todo.id)) }}
+            {{ wtf.render_form(todo_update_button,action = url_for('updates', todo_id=todo.id))}}
+            {{ wtf.render_form(todo_status_update, action = url_for('status', todo_id=todo.id, done =
+            todo.to_dict().done)) }}
+        </td>
+
+
+    </tr>
 </div>
+
+<div class="col-sm-4"></div>
+
+
 {% endmacro %}
